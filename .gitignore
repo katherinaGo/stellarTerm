@@ -1,0 +1,6 @@
+/target
+/build
+StellarTerm.iml
+.idea
+.allure
+local.properties
