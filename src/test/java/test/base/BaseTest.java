@@ -31,16 +31,26 @@ public class BaseTest {
     protected BalancesPage balancesPage;
     protected AcceptAssetPage acceptAssetPage;
     protected Properties properties;
+    protected String VALID_SECRET_KEY;
+    protected String NO_FUNDS_SECRET_KEY;
+    protected String ACTIVE_SECRET_KEY;
+    protected String INVALID_SECRET_KEY;
 
     @SneakyThrows
-    @BeforeMethod
-    public void setUp(ITestContext context) {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+    public BaseTest() {
         properties = new Properties();
         FileReader reader = new FileReader("src/test/resources/local.properties");
         properties.load(reader);
-//        driver = new ChromeDriver();
+        VALID_SECRET_KEY = properties.getProperty("VALID_SECRET_KEY");
+        NO_FUNDS_SECRET_KEY = properties.getProperty("NO_FUNDS_SECRET_KEY");
+        ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
+        INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
+    }
 
+    @BeforeMethod
+    public void setUp(ITestContext context) {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+//        driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
 //        driver = new ChromeDriver(options);

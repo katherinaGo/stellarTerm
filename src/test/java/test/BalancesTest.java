@@ -29,7 +29,7 @@ public class BalancesTest extends BaseTest {
     @Description("Check if copyButton works correct and copy to clipboard public key")
     public void checkPossibilityToCopyPublicKey() {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         balancesPage.clickCopyBtnToGetPublicKey()
                 .checkIfCopiedPublicCorrect();
     }
@@ -38,7 +38,7 @@ public class BalancesTest extends BaseTest {
     @Description("Check if copyButton works correct and copy to clipboard federation address")
     public void checkPossibilityToCopyFederationAddress() {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         balancesPage.clickCopyBtnToGetFederationAddress()
                 .checkIfCopiedFederationCorrect();
     }
@@ -47,18 +47,17 @@ public class BalancesTest extends BaseTest {
     @Description("Check if possible to edit existing federation address and set the new one")
     public void checkPossibilityToEditFederation(String validFederation) {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         balancesPage.clickCopyBtnToGetFederationAddress()
                 .editFederationAddressToValid(validFederation)
                 .checkIfNewFederationSaved();
-
     }
 
     @Test(dataProvider = "invalid federation address")
     @Description("Check if correct error displayed when set invalid federation address")
     public void checkErrorWhenSetInvalidFederationAddress(String invalidFederation) {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         balancesPage.editFederationAddressToInvalid(invalidFederation)
                 .checkIfCorrespondFederationErrorDisplayed(INVALID_FEDERATION_ERROR);
     }
@@ -67,7 +66,7 @@ public class BalancesTest extends BaseTest {
     @Description("Check if amount of assets in 'Balances' section corresponds to amount of trustlines in 'Reserved Balance>Trustlines' section")
     public void checkIfBalanceForTrustlinesReservedCorrectly() {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("ACTIVE_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(ACTIVE_SECRET_KEY);
         balancesPage.countAmountOfAssets()
                 .checkIfCorrectAssetsAmountDisplayedInReservedBalance();
     }
@@ -76,7 +75,7 @@ public class BalancesTest extends BaseTest {
     @Description("Check if amount of truslines corresponds to reserved XLM (0.5XLM for each trustline)")
     public void checkIfXLMReservedCorrectlyAccordingToAssets() {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("ACTIVE_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(ACTIVE_SECRET_KEY);
         balancesPage.countAmountOfAssets()
                 .checkIfCorrectXlmReservedForAddedTrustlines();
     }

@@ -35,7 +35,7 @@ public class AuthTest extends BaseTest {
     @Description("Log in with valid secret key and check if logged in")
     public void loginWithValidActivatedSecretKey() {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"))
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY)
                 .isLoggedInWithActivatedSecretKey();
     }
 
@@ -43,7 +43,7 @@ public class AuthTest extends BaseTest {
     @Description("Log in with not activated account (with 0 xlm on balance)")
     public void loginWithNonActivatedSecretKey() {
         accountPage.openLoginPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("INVALID_SECRET_KEY"))
+        accessAccountPage.loginWithSecretKey(INVALID_SECRET_KEY)
                 .isLoggedInWithNonActivatedSecretKey();
     }
 }

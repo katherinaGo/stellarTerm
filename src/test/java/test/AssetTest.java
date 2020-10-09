@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import test.base.BaseTest;
 
 public class AssetTest extends BaseTest {
+
     private static final String issuer = "pr.network";
     private static final String assetIssuer = "GAZPKDTEZ5UM3BF4E7FL7EMXRMLH76F2TNVXRLOF6SCVXOFWSPCEWFI5";
     private static final String assetCode = "youtube";
@@ -12,7 +13,7 @@ public class AssetTest extends BaseTest {
     @Test(priority = 1)
     public void addAssetTest() {
         acceptAssetPage.openAcceptAssetPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         acceptAssetPage.addOrRemoveAsset("created")
                 .checkIfNewAssetWasAdded();
     }
@@ -20,7 +21,7 @@ public class AssetTest extends BaseTest {
     @Test(priority = 2)
     public void removeAssetTest() {
         acceptAssetPage.openAcceptAssetPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         acceptAssetPage.addOrRemoveAsset("removed")
                 .checkIfAssetRemoved();
     }
@@ -28,7 +29,7 @@ public class AssetTest extends BaseTest {
     @Test
     public void findAssetByIssuerTest() {
         acceptAssetPage.openAcceptAssetPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         acceptAssetPage.findAssetByIssuer(issuer)
                 .checkIfValidAssetsFound(issuer);
     }
@@ -36,7 +37,7 @@ public class AssetTest extends BaseTest {
     @Test
     public void acceptAssetManually() {
         acceptAssetPage.openAcceptAssetPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("VALID_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
         acceptAssetPage.findAssetByCodeAndIssuer(assetCode, assetIssuer)
                 .checkIfValidAssetFound(assetIssuer);
     }
@@ -44,7 +45,7 @@ public class AssetTest extends BaseTest {
     @Test
     public void acceptAssetWithNotEnoughFunds() {
         acceptAssetPage.openAcceptAssetPage();
-        accessAccountPage.loginWithSecretKey(properties.getProperty("NO_FUNDS_SECRET_KEY"));
+        accessAccountPage.loginWithSecretKey(NO_FUNDS_SECRET_KEY);
         acceptAssetPage.acceptAssetWIthNoFunds()
                 .checkIfNoFundsErrorDisplayed(expectedError);
     }
