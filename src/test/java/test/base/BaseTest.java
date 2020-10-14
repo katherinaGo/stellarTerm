@@ -27,7 +27,7 @@ public class BaseTest {
     protected AccessAccountPage accessAccountPage;
     protected SendPage sendPage;
     protected BasePage basePage;
-    protected HeaderPage headerPage;
+    protected BuyLumensPage buyLumensPage;
     protected BalancesPage balancesPage;
     protected AcceptAssetPage acceptAssetPage;
     protected Properties properties;
@@ -35,6 +35,7 @@ public class BaseTest {
     protected String NO_FUNDS_SECRET_KEY;
     protected String ACTIVE_SECRET_KEY;
     protected String INVALID_SECRET_KEY;
+    protected String NON_ACTIVATED_SECRET_KEY;
 
     @SneakyThrows
     public BaseTest() {
@@ -45,6 +46,7 @@ public class BaseTest {
         NO_FUNDS_SECRET_KEY = properties.getProperty("NO_FUNDS_SECRET_KEY");
         ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
         INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
+        NON_ACTIVATED_SECRET_KEY = properties.getProperty("NON_ACTIVATED_SECRET_KEY");
     }
 
     @BeforeMethod
@@ -67,7 +69,7 @@ public class BaseTest {
         sighUpSteps = new SighUpSteps(driver);
         accessAccountPage = new AccessAccountPage(driver);
         sendPage = new SendPage(driver);
-        headerPage = new HeaderPage(driver);
+        buyLumensPage = new BuyLumensPage(driver);
         balancesPage = new BalancesPage(driver);
         acceptAssetPage = new AcceptAssetPage(driver);
     }
