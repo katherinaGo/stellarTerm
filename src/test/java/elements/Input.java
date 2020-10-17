@@ -8,9 +8,6 @@ public class Input {
 
     private WebElement element;
     private static final String INPUT_PATH = "//input[@name='%s']";
-    // recipient
-    // inputSendAmount
-    // memo
 
     public Input(WebDriver driver, String field) {
         element = driver.findElement(By.xpath(String.format(INPUT_PATH, field)));

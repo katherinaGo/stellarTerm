@@ -15,7 +15,7 @@ public class BalancesPage extends BasePage {
     private static final String EDIT_FEDERATION_BTN_PATH = "//div[@class='Account_alert_right']//span[contains(text(), 'EDIT')]";
     private static final String EDIT_INPUT_PATH = "//input[@name='inputPriceAsset']";
     private static final By SAVE_BTN_CLASS = By.className("s-button");
-    private static final By ERROR_FEDERATION_PATH = By.className("Federation_warning");
+    private static final By ERROR_FEDERATION_CLASSNAME = By.className("Federation_warning");
     private static final String ASSET_PATH = "//table[@class='BalancesTable']//div[@class='AssetCardMain__main']";
     private static final String TRUSTLINES_PATH = "//div[@class='reserved_item']/span[contains(text(), 'Trustlines')]";
     private static final String TRUSTLINE_XLM_RESERVED_PATH = "//a[@href='/account/addTrust/']//span[@class='reserve_with_icon']";
@@ -77,7 +77,7 @@ public class BalancesPage extends BasePage {
     }
 
     public void checkIfCorrespondFederationErrorDisplayed(String expectedError) {
-        String actualError = driver.findElement(ERROR_FEDERATION_PATH).getAttribute("innerText");
+        String actualError = findElementBy(ERROR_FEDERATION_CLASSNAME).getAttribute("innerText");
         boolean isCorrectErrorDisplayed = actualError.equals(expectedError);
         assertTrue(isCorrectErrorDisplayed, "Invalid federation error is nor correct.");
     }
@@ -92,6 +92,7 @@ public class BalancesPage extends BasePage {
         System.out.println(String.format("Amount of assets in 'Balances' section: %s", amountOfAssetsFromList));
         amountOfAssetsFromReservedBalance = setAmountOfAssetsFromReservedBalance();
         System.out.println(String.format("Amount of assets in 'Reserved Balance>Trustlines' section: %s", amountOfAssetsFromReservedBalance));
+
         return this;
     }
 
@@ -103,6 +104,8 @@ public class BalancesPage extends BasePage {
     public void checkIfCorrectXlmReservedForAddedTrustlines() {
         countReservedXLMToTrustlines();
         boolean isCorrectXLMToAssetsAmount = actualXlmAmountReservedForTruslines.contains(xlmReserveForfAssets);
+        System.out.println(xlmReserveForfAssets);
+        System.out.println(actualXlmAmountReservedForTruslines);
         assertTrue(isCorrectXLMToAssetsAmount, "Incorrect XLM amount reserved for truslines.");
     }
 
@@ -112,49 +115,48 @@ public class BalancesPage extends BasePage {
     }
 
     private String setAmountOfAssetsFromReservedBalance() {
-        return driver.findElement(By.xpath(TRUSTLINES_PATH)).getAttribute("innerText");
+        return findElement(TRUSTLINES_PATH).getAttribute("innerText");
     }
 
     private void countReservedXLMToTrustlines() {
-        xlmReserveForfAssets = String.valueOf((amountOfAssets * 0.5));
-        actualXlmAmountReservedForTruslines = driver.findElement(By.xpath(TRUSTLINE_XLM_RESERVED_PATH)).getAttribute("innerText");
+        xlmReserveForfAssets = String.valueOf((amountOfAssets * 0.5)).replaceAll("()\\.0+$|(\\..+?)0+$", "$2");
+        actualXlmAmountReservedForTruslines = findElement(TRUSTLINE_XLM_RESERVED_PATH).getAttribute("innerText");
     }
 
-
     private void clickEditBtn() {
-        driver.findElement(By.xpath(EDIT_FEDERATION_BTN_PATH)).click();
+        findElement(EDIT_FEDERATION_BTN_PATH).click();
     }
 
     private void inputNewFederation(String newFederationAddress) {
-        driver.findElement(By.xpath(EDIT_INPUT_PATH)).clear();
-        driver.findElement(By.xpath(EDIT_INPUT_PATH)).sendKeys(newFederationAddress);
+        findElement(EDIT_INPUT_PATH).clear();
+        findElement(EDIT_INPUT_PATH).sendKeys(newFederationAddress);
     }
 
     private void saveNewFederation() {
         waitForElementClickable(SAVE_BTN_CLASS);
-        driver.findElement(SAVE_BTN_CLASS).click();
+        findElementBy(SAVE_BTN_CLASS).click();
     }
 
     private void setActualFederationAddress() {
-        driver.findElement(By.xpath(COPY_FEDERATION_PATH)).click();
+        findElement(COPY_FEDERATION_PATH).click();
         actualFederationAddress = getValueFromClipboard();
     }
 
     private void setExpectedFederationAddress() {
-        driver.findElement(By.xpath(FEDERATION_FROM_HEADER_PATH)).click();
+        findElement(FEDERATION_FROM_HEADER_PATH).click();
         expectedFederationAddress = getValueFromClipboard();
     }
 
     private void clickSendBtn() {
-        driver.findElement(By.xpath(SEND_EURT_PATH)).click();
+        findElement(SEND_EURT_PATH).click();
     }
 
     private void setActualPublicKey() {
-        driver.findElement(By.xpath(COPY_PUBLIC_PATH)).click();
+        findElement(COPY_PUBLIC_PATH).click();
         actualPublicKey = getValueFromClipboard();
     }
 
     private void setExpectedPublicKey() {
-        expectedPublicKey = driver.findElement(By.xpath(PUBLIC_KEY_PATH)).getAttribute("innerText");
+        expectedPublicKey = findElement(PUBLIC_KEY_PATH).getAttribute("innerText");
     }
 }

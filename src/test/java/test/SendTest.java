@@ -14,6 +14,7 @@ public class SendTest extends BaseTest {
     private static final String ACCEPT_ALL_ADDRESS = "katya.gowin.all*lobstr.co";
     private static final String VALID_RECIPIENT_WITH_REQUIRED_MEMO = "GBDUXW4E5WRM5EM6UXBLE7Y5XGSXJX472BSSBPKFPQ3PJCJHRIA6SH4C";
     private static final String XLM_SEND = " XLM";
+    private static final String amount = "0.000012";
 
     private static final SendFields sendFields = new SendFields(
             "0.000012",
@@ -33,7 +34,7 @@ public class SendTest extends BaseTest {
     public void sendAssetToActivatedPublicKey() {
         sendPage.openSendPage();
         accessAccountPage.loginWithSecretKey(ACTIVE_SECRET_KEY);
-        sendPage.inputRecipientAndAmount(VALID_RECIPIENT)
+        sendPage.inputRecipientAndAmount(VALID_RECIPIENT, amount)
                 .chooseAssetToSend()
                 .confirmTransaction()
                 .checkIfSendCompletedWithoutMemo(sendFields.getAsset(), VALID_RECIPIENT);
@@ -43,7 +44,7 @@ public class SendTest extends BaseTest {
     public void sendXLMToAddressWithMemoRequired() {
         sendPage.openSendPage();
         accessAccountPage.loginWithSecretKey(ACTIVE_SECRET_KEY);
-        sendPage.inputRecipientAndAmount(ACCEPT_ALL_ADDRESS)
+        sendPage.inputRecipientAndAmount(ACCEPT_ALL_ADDRESS, amount)
                 .confirmTransactionWithMemo()
                 .checkIfSendCompletedWithMemo(XLM_SEND, ACCEPT_ALL_ADDRESS);
     }
@@ -58,7 +59,7 @@ public class SendTest extends BaseTest {
     public void sendXLMtoAddressWithMemoRequiredButNotFilled() {
         sendPage.openSendPage();
         accessAccountPage.loginWithSecretKey(ACTIVE_SECRET_KEY);
-        sendPage.inputRecipientAndAmount(VALID_RECIPIENT_WITH_REQUIRED_MEMO)
+        sendPage.inputRecipientAndAmount(VALID_RECIPIENT_WITH_REQUIRED_MEMO, amount)
                 .checkIfMemoRequiredButEmpty(sendFields.getMemoText())
                 .confirmTransactionWithMemo()
                 .checkIfSendCompletedWithMemo(XLM_SEND, VALID_RECIPIENT_WITH_REQUIRED_MEMO);
@@ -67,7 +68,7 @@ public class SendTest extends BaseTest {
     @Test
     public void sendXLMtoAddressWithMemo() {
         sendPage.openSendPage();
-        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
+        accessAccountPage.loginWithSecretKey(ACTIVE_SECRET_KEY);
         sendPage.fillSendInputsWithMemo(VALID_RECIPIENT, sendFields.getAmount(), sendFields.getMemoText())
                 .confirmTransactionWithMemo()
                 .checkIfSendCompletedWithMemo(sendFields.getAsset(), VALID_RECIPIENT);

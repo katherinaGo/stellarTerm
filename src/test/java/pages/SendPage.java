@@ -40,9 +40,9 @@ public class SendPage extends BasePage {
         return this;
     }
 
-    public SendPage inputRecipientAndAmount(String recipient) {
+    public SendPage inputRecipientAndAmount(String recipient, String amount) {
         new Input(driver, "recipient").write(recipient);
-        new Input(driver, "inputSendAmount").write(actualAmount);
+        new Input(driver, "inputSendAmount").write(amount);
 //        inputValidAmount();
         return this;
     }
