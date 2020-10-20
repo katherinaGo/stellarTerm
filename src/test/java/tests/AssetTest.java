@@ -1,7 +1,7 @@
-package test;
+package tests;
 
 import org.testng.annotations.Test;
-import test.base.BaseTest;
+import tests.base.BaseTest;
 
 public class AssetTest extends BaseTest {
 

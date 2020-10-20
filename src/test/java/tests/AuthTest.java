@@ -1,9 +1,9 @@
-package test;
+package tests;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.*;
-import test.base.BaseTest;
-import test.base.TestListener;
+import tests.base.BaseTest;
+import tests.base.TestListener;
 
 @Listeners(TestListener.class)
 public class AuthTest extends BaseTest {

@@ -1,10 +1,10 @@
-package test;
+package tests;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.*;
 import pages.RetryAnalyzer;
-import test.base.BaseTest;
-import test.base.TestListener;
+import tests.base.BaseTest;
+import tests.base.TestListener;
 
 @Listeners(TestListener.class)
 public class BalancesTest extends BaseTest {

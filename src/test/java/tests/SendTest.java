@@ -1,11 +1,11 @@
-package test;
+package tests;
 
 import models.SendFields;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.RetryAnalyzer;
-import test.base.BaseTest;
-import test.base.TestListener;
+import tests.base.BaseTest;
+import tests.base.TestListener;
 
 @Listeners(TestListener.class)
 public class SendTest extends BaseTest {

@@ -3,37 +3,37 @@
 <suite name="Regression">
     <test name="Asset testing">
         <classes>
-            <class name="test.AssetTest"/>
+            <class name="tests.AssetTest"/>
         </classes>
     </test>
 
     <test name="Auth testing">
         <classes>
-            <class name="test.AuthTest"/>
+            <class name="tests.AuthTest"/>
         </classes>
     </test>
 
     <test name="Balance testing">
         <classes>
-            <class name="test.BalancesTest"/>
+            <class name="tests.BalancesTest"/>
         </classes>
     </test>
 
     <test name="Buy Lumens testing">
         <classes>
-            <class name="test.BuyLumensTest"/>
+            <class name="tests.BuyLumensTest"/>
         </classes>
     </test>
 
     <test name="Send testing">
         <classes>
-            <class name="test.SendTest"/>
+            <class name="tests.SendTest"/>
         </classes>
     </test>
 
     <test name="Buy Lumens testing">
         <classes>
-            <class name="test.SetSecretPhraseTest"/>
+            <class name="tests.SetSecretPhraseTest"/>
         </classes>
     </test>
 
