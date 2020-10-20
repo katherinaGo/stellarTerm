@@ -36,17 +36,17 @@ public class BaseTest {
     protected String INVALID_SECRET_KEY;
     protected String NON_ACTIVATED_SECRET_KEY;
 
-    @SneakyThrows
-    public BaseTest() {
-        properties = new Properties();
-        FileReader reader = new FileReader("src/test/resources/local.properties");
-        properties.load(reader);
-        VALID_SECRET_KEY = properties.getProperty("VALID_SECRET_KEY");
-        NO_FUNDS_SECRET_KEY = properties.getProperty("NO_FUNDS_SECRET_KEY");
-        ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
-        INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
-        NON_ACTIVATED_SECRET_KEY = properties.getProperty("NON_ACTIVATED_SECRET_KEY");
-    }
+//    @SneakyThrows
+//    public BaseTest() {
+//        properties = new Properties();
+//        FileReader reader = new FileReader("src/test/resources/local.properties");
+//        properties.load(reader);
+//        VALID_SECRET_KEY = properties.getProperty("VALID_SECRET_KEY");
+//        NO_FUNDS_SECRET_KEY = properties.getProperty("NO_FUNDS_SECRET_KEY");
+//        ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
+//        INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
+//        NON_ACTIVATED_SECRET_KEY = properties.getProperty("NON_ACTIVATED_SECRET_KEY");
+//    }
 
     @BeforeMethod
     public void setUp(ITestContext context) {
