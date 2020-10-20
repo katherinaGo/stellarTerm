@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Regression">
-    <test name="Regression testing">
+    <test name="Asset testing">
         <classes>
             <class name="test.AssetTest"/>
+        </classes>
+    </test>
+
+    <test name="Auth testing">
+        <classes>
             <class name="test.AuthTest"/>
+        </classes>
+    </test>
+
+    <test name="Balance testing">
+        <classes>
             <class name="test.BalancesTest"/>
+        </classes>
+    </test>
+
+    <test name="Buy Lumens testing">
+        <classes>
             <class name="test.BuyLumensTest"/>
+        </classes>
+    </test>
+
+    <test name="Send testing">
+        <classes>
             <class name="test.SendTest"/>
+        </classes>
+    </test>
+
+    <test name="Buy Lumens testing">
+        <classes>
             <class name="test.SetSecretPhraseTest"/>
         </classes>
     </test>
+
 </suite>
