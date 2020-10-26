@@ -49,4 +49,13 @@ public class AssetTest extends BaseTest {
         acceptAssetPage.acceptAssetWIthNoFunds()
                 .checkIfNoFundsErrorDisplayed(expectedError);
     }
+
+    @Test
+    public void checkIfAddingAssetDisplayedInTrustlinesHistory() {
+        acceptAssetPage.openAcceptAssetPage();
+        accessAccountPage.loginWithSecretKey(VALID_SECRET_KEY);
+        acceptAssetPage.findAssetByCodeAndIssuer(assetCode, assetIssuer)
+                .acceptAssetManually("created")
+                .checkIfAddingAssetDisplayedInHistory(assetCode, "Activity");
+    }
 }

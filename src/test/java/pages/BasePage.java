@@ -91,6 +91,16 @@ public class BasePage {
         return null;
     }
 
+    public List<WebElement> findElements(String xPath) {
+        try {
+            return driver.findElements(By.xpath(xPath));
+        } catch (NoSuchElementException ex) {
+            Assert.fail("Element not found by locator " + xPath);
+            log.error(ex.getLocalizedMessage());
+        }
+        return null;
+    }
+
     public List<WebElement> getElements(String xPath) {
         return driver.findElements(By.xpath(xPath));
     }
