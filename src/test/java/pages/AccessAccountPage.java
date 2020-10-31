@@ -25,10 +25,6 @@ public class AccessAccountPage extends BasePage {
         super(driver);
     }
 
-    public void inputSecretKey(String secretKey) {
-        findElement(SECRET_KEY_FIELD_PATH).sendKeys(secretKey);
-    }
-
     public AccessAccountPage loginWithSecretKey(String secretKey) {
         inputSecretKey(secretKey);
         checkAcceptTermsConditionsCheckbox();
@@ -97,6 +93,10 @@ public class AccessAccountPage extends BasePage {
     private boolean isAccountActivationTitleDisplayed() {
         waitForElementVisible(By.xpath(ACCOUNT_ACTIVATION_REQUIRED_TITLE_PATH));
         return findElement(ACCOUNT_ACTIVATION_REQUIRED_TITLE_PATH).isDisplayed();
+    }
+
+    private void inputSecretKey(String secretKey) {
+        findElement(SECRET_KEY_FIELD_PATH).sendKeys(secretKey);
     }
 
     private void clickConfigureSecretPhraseButton() {

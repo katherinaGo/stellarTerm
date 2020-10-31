@@ -15,7 +15,7 @@ import java.io.FileReader;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-@Listeners(TestListener.class)
+//@Listeners(TestListener.class)
 public class BaseTest {
 
     protected static WebDriver driver;
@@ -29,6 +29,7 @@ public class BaseTest {
     protected BuyLumensPage buyLumensPage;
     protected BalancesPage balancesPage;
     protected AcceptAssetPage acceptAssetPage;
+    protected ExchangePage exchangePage;
     protected Properties properties;
     protected String VALID_SECRET_KEY;
     protected String NO_FUNDS_SECRET_KEY;
@@ -73,6 +74,7 @@ public class BaseTest {
         buyLumensPage = new BuyLumensPage(driver);
         balancesPage = new BalancesPage(driver);
         acceptAssetPage = new AcceptAssetPage(driver);
+        exchangePage = new ExchangePage(driver);
     }
 
     @AfterMethod
