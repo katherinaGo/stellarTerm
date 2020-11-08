@@ -35,8 +35,8 @@ public class TestListener implements ITestListener {
         System.out.println(String.format("============================ SKIPPED TEST %s ============================", result.getName()));
     }
 
-    @Attachment(value = "screenshot", type = "image/png")
-    public static byte[] takeScreenshot(ITestResult result) {
+    @Attachment(type = "image/png", value = "screenshot")
+    private byte[] takeScreenshot(ITestResult result) {
         ITestContext context = result.getTestContext();
         try {
             return ((TakesScreenshot) context.getAttribute("driver")).getScreenshotAs(OutputType.BYTES);
