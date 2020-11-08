@@ -4,9 +4,7 @@ import io.qameta.allure.Description;
 import org.testng.annotations.*;
 import pages.RetryAnalyzer;
 import tests.base.BaseTest;
-import tests.base.TestListener;
 
-@Listeners(TestListener.class)
 public class BalancesTest extends BaseTest {
 
     private static final String INVALID_FEDERATION_ERROR = "Symbols '+', '*', '@', '>' and 'space' are not allowed in federation name.";

@@ -3,9 +3,7 @@ package tests;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
-import tests.base.TestListener;
 
-@Listeners(TestListener.class)
 public class BuyLumensTest extends BaseTest {
 
     private static final String ACTIVATED_PUBLIC_KEY = "GAWNF5KPQB5HZCHUBUNXBRXLHYAYOQGYL3NKGMV2CEGXSS6EDSOJJL2I";

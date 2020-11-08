@@ -5,9 +5,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.RetryAnalyzer;
 import tests.base.BaseTest;
-import tests.base.TestListener;
 
-@Listeners(TestListener.class)
 public class SendTest extends BaseTest {
 
     private static final String VALID_RECIPIENT = "GAWNF5KPQB5HZCHUBUNXBRXLHYAYOQGYL3NKGMV2CEGXSS6EDSOJJL2I";

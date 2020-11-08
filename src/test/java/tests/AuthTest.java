@@ -3,9 +3,7 @@ package tests;
 import io.qameta.allure.Description;
 import org.testng.annotations.*;
 import tests.base.BaseTest;
-import tests.base.TestListener;
 
-@Listeners(TestListener.class)
 public class AuthTest extends BaseTest {
 
     @DataProvider(name = "Invalid secret keys")
