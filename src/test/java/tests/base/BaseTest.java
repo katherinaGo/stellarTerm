@@ -41,7 +41,7 @@ public class BaseTest {
     public BaseTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
-        properties = new Properties();
+//        properties = new Properties();
 //        FileReader reader = new FileReader("src/test/resources/local.properties");
 //        properties.load(reader);
         VALID_SECRET_KEY = System.getProperty("VALID_SECRET_KEY");

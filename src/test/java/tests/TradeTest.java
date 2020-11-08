@@ -40,4 +40,12 @@ public class TradeTest extends BaseTest {
                 .makeOfferNotFilled(price, amount, buyOffer)
                 .checkIfOfferDisplayedInList(price);
     }
+
+    @Test
+    public void cancelOrder() {
+        exchangePage.openExchangePage()
+                .loginWithSecretKeyFromPopUp(VALID_SECRET_KEY)
+                .cancelOrder()
+                .checkIfOrderWasCanceled();
+    }
 }
