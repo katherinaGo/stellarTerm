@@ -3,6 +3,7 @@ package tests.base;
 import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -35,10 +36,15 @@ public class BaseTest {
     protected String INVALID_SECRET_KEY;
     protected String NON_ACTIVATED_SECRET_KEY;
 
+    @BeforeMethod
     @SneakyThrows
-    public BaseTest() {
+    public void setUp(ITestContext context) {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        context.setAttribute("driver", driver);
         properties = new Properties();
         FileReader reader = new FileReader("src/test/resources/local.properties");
         properties.load(reader);
@@ -47,18 +53,6 @@ public class BaseTest {
         ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
         INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
         NON_ACTIVATED_SECRET_KEY = properties.getProperty("NON_ACTIVATED_SECRET_KEY");
-    }
-
-    @BeforeMethod
-    public void setUp(ITestContext context) {
-//        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-//        driver = new ChromeDriver();
-
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
-//        driver = new ChromeDriver(options);
-//        context.setAttribute("driver", driver);
-
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
