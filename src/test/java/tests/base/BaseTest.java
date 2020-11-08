@@ -41,15 +41,14 @@ public class BaseTest {
     public BaseTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
-//        properties = new Properties();
-//        FileReader reader = new FileReader("src/test/resources/local.properties");
-//        properties.load(reader);
-        VALID_SECRET_KEY = System.getProperty("VALID_SECRET_KEY");
-//        VALID_SECRET_KEY = properties.getProperty("VALID_SECRET_KEY");
-//        NO_FUNDS_SECRET_KEY = properties.getProperty("NO_FUNDS_SECRET_KEY");
-//        ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
-//        INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
-//        NON_ACTIVATED_SECRET_KEY = properties.getProperty("NON_ACTIVATED_SECRET_KEY");
+        properties = new Properties();
+        FileReader reader = new FileReader("src/test/resources/local.properties");
+        properties.load(reader);
+        VALID_SECRET_KEY = properties.getProperty("VALID_SECRET_KEY");
+        NO_FUNDS_SECRET_KEY = properties.getProperty("NO_FUNDS_SECRET_KEY");
+        ACTIVE_SECRET_KEY = properties.getProperty("ACTIVE_SECRET_KEY");
+        INVALID_SECRET_KEY = properties.getProperty("INVALID_SECRET_KEY");
+        NON_ACTIVATED_SECRET_KEY = properties.getProperty("NON_ACTIVATED_SECRET_KEY");
     }
 
     @BeforeMethod
